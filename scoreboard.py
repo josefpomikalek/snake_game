@@ -22,6 +22,10 @@ class Scoreboard(Turtle):
     def game_over(self):
         self.goto(0, 0)
         self.write("GAME OVER", align=ALIGNMENT, font=FONT)
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("data.txt", mode="w") as data:
+                data.write(f"{self.high_score}")
         
     def increase_score(self):
         self.score += 1
